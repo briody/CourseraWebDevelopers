@@ -38,11 +38,13 @@ h2 {
 	text-align: center;
 	float: right;
   max-width: 100%;
-  margin-top: 0;
-  margin-right: 0;
+  margin-top: -1px;
+  margin-right: -1px;
   margin-bottom: 10px;
-  padding: 5px;
+  width: 160px;
+  padding: 2px 15px 2px 15px;
   font-size: 1.25em;
+
 }
 
 
@@ -51,37 +53,43 @@ div div{
   border: 1px solid black;
   margin-bottom: 15px;
   float: left;
-  height: 320px;
   margin-right: auto;
   margin-left: auto;
-  width: 90%;
+
 }
 
 /********** Small devices **********/
 @media (max-width: 767px) {
   #chicken-menu, #beef-menu, #sushi-menu {
     margin-left:3%;
+    margin-bottom: 3%;
     width: 90%;
+    min-width: 305px;
+    max-height: 275px;
   }
 }
 
 /********** Medium devices **********/
 @media (min-width: 768px) and (max-width: 991px) {
   #chicken-menu, #beef-menu {
-    width: 47%;
-    margin-left: 2%;
+    width: 46%;
+    margin-left: 3%;
+    margin-bottom: 3%;
+    height: 240px;
   }
   #sushi-menu {
-    width: 96%;
-    margin-left: 2%;
+    width: 95%;
+    margin-left: 3%;
+    height: 240px;
   }
 }
 
 /********** Large devices **********/
 @media (min-width: 992px) {
   #chicken-menu, #beef-menu, #sushi-menu {
-    width: 31%;
-    margin-left: 2%;
+    width: 29.33%;
+    margin-left: 3%;
+    height: 310px;
   }
 
 }
