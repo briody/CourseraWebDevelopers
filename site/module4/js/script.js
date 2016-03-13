@@ -39,12 +39,9 @@ var showLoading = function (selector) {
 // Return substitute of '{{propName}}' 
 // with propValue in given 'string' 
 var insertProperty = function (string, propName, propValue) {
-  console.log("String before: ", string);
   var propToReplace = "{{" + propName + "}}";
-  console.log(propName);
   string = string
     .replace(new RegExp(propToReplace, "g"), propValue);
-  console.log("String after: ", string);
   return string;
 }
 
@@ -107,7 +104,7 @@ function buildAndShowHomeHTML (categories) {
       // Pay attention to what type of data that function returns vs what the chosenCategoryShortName
       // variable's name implies it expects.
       var category = chooseRandomCategory(categories);
-      console.log("Category",category);
+      //console.log("Category",category);
       var chosenCategoryShortName = category.short_name;
 
 
@@ -148,7 +145,7 @@ function chooseRandomCategory (categories) {
 
   // return category object with that randomArrayIndex
   var chosenRandomCategory = categories[randomArrayIndex];
-  console.log("chosenRandomCategory - Name:" + chosenRandomCategory.name + "\n" + "Short Name:" + chosenRandomCategory.short_name);
+  //console.log("chosenRandomCategory - Name:" + chosenRandomCategory.name + "\n" + "Short Name:" + chosenRandomCategory.short_name);
   return chosenRandomCategory;
 }
 
