@@ -39,9 +39,12 @@ var showLoading = function (selector) {
 // Return substitute of '{{propName}}' 
 // with propValue in given 'string' 
 var insertProperty = function (string, propName, propValue) {
+  console.log("String before: ", string);
   var propToReplace = "{{" + propName + "}}";
+  console.log(propName);
   string = string
     .replace(new RegExp(propToReplace, "g"), propValue);
+  console.log("String after: ", string);
   return string;
 }
 
@@ -78,12 +81,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
 // TODO: STEP 1: Substitute [...] below with the *value* of the function buildAndShowHomeHTML, 
 // so it can be called when server responds with the categories data.
 
-// *** start ***
+// ***
+//
+// ***
 // On first load, show home view
 showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
-  allCategoriesUrl, 
-  buildAndShowCategoriesHTML, // ***** <---- TODO: STEP 1: Substitute [...] ******
+  allCategoriesUrl,
+  buildAndShowHomeHTML, // ***** <---- TODO: STEP 1: Substitute [...] ******
   true); // Explicitely setting the flag to get JSON from server processed into an object literal
 });
 // *** finish **
@@ -103,7 +108,7 @@ function buildAndShowHomeHTML (categories) {
       // variable's name implies it expects.
       var category = chooseRandomCategory(categories);
       console.log("Category",category);
-      var chosenCategoryShortName = category && category.short_name ? category.short_name : "";
+      var chosenCategoryShortName = category.short_name;
 
 
 
@@ -120,7 +125,9 @@ function buildAndShowHomeHTML (categories) {
       // Hint: you need to surround the chosen category short name with something before inserting
       // it into the home html snippet.
       // 
-      var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml,"randomCategoryShortName",'"'+chosenCategoryShortName+"'");
+      var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml,
+        "randomCategoryShortName",
+        "'"+chosenCategoryShortName+"'");
       
 
       // TODO: STEP 4: Insert the the produced HTML in STEP 3 into the main page
@@ -140,7 +147,9 @@ function chooseRandomCategory (categories) {
   var randomArrayIndex = Math.floor(Math.random() * categories.length);
 
   // return category object with that randomArrayIndex
-  return categories[randomArrayIndex];
+  var chosenRandomCategory = categories[randomArrayIndex];
+  console.log("chosenRandomCategory - Name:" + chosenRandomCategory.name + "\n" + "Short Name:" + chosenRandomCategory.short_name);
+  return chosenRandomCategory;
 }
 
 
